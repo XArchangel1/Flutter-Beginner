@@ -10,6 +10,7 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   String name = "";
+  bool changeButton = false;
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -54,27 +55,28 @@ class _LoginPageState extends State<LoginPage> {
                   SizedBox(
                     height: 20.0,
                   ),
-
                   InkWell(
-                    onTap: (){
-                      Navigator.pushNamed(context, MyRoutes.homeRoute);
+                    onTap: () {
+                      //Navigator.pushNamed(context, MyRoutes.homeRoute);
+                      setState(() {
+                        changeButton = true;
+                      });
                     },
-                    child: Container(
-                      width: 150,
-                      height: 50,
-                      alignment: Alignment.center,
-                      child: Text(
-                        "Login",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18,
-                        )),
+                    child: AnimatedContainer(
+                        duration: Duration(seconds: 1),
+                        width: changeButton?50:150,
+                        height: 50,
+                        alignment: Alignment.center,
+                        child: Text("Login",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18,
+                            )),
                         decoration: BoxDecoration(
                           color: Colors.deepPurple,
-                          borderRadius: BorderRadius.circular(8),
-                        )
-                    ),
+                          shape:changeButton? BoxShape.circle:BoxShape.rectangle,
+                        )),
                   )
 
                   /*ElevatedButton(
