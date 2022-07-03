@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors, sort_child_properties_last, use_build_context_synchronously
+
 import 'package:first_app/utils/routes.dart';
 import 'package:flutter/material.dart';
 
